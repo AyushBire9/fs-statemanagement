@@ -1,0 +1,34 @@
+name: Anecdotes voting smoke test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "anecdotes/**"
+      - "anecdotes-tests/**"
+      - ".github/workflows/anecdotes-vote-smoke.yml"
+  workflow_dispatch:
+
+jobs:
+  vote-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install application dependencies
+        working-directory: anecdotes
+        run: npm ci
+      - name: Build anecdotes application
+        working-directory: anecdotes
+        run: npm run build
+      - name: Install Playwright test dependencies
+        working-directory: anecdotes-tests
+        run: npm ci
+      - name: Install Chromium
+        working-directory: anecdotes-tests
+        run: npx playwright install --with-deps chromium
+      - name: Test Zustand voting
+        working-directory: anecdotes-tests
+        run: npx playwright test -c playwright.vote.config.js tests/vote-only.spec.js
