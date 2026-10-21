@@ -16,7 +16,7 @@ jobs:
 
       - name: Install anecdotes dependencies
         working-directory: anecdotes
-        run: npm install
+        run: npm ci
 
       - name: Install test dependencies
         working-directory: anecdotes-tests

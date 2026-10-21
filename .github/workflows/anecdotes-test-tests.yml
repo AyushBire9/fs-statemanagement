@@ -16,14 +16,7 @@ jobs:
 
       - name: Install anecdotes dependencies
         working-directory: anecdotes
-        run: npm install
-
-      - name: Generate reproducible npm lockfile snapshot
-        working-directory: anecdotes
-        run: |
-          echo CHAPTER3_LOCKFILE_BEGIN
-          node -e "const fs=require('fs');const s=JSON.stringify(JSON.parse(fs.readFileSync('package-lock.json','utf8')));for(let i=0;i<s.length;i+=3000)console.log('LOCKCHUNK_'+s.slice(i,i+3000))"
-          echo CHAPTER3_LOCKFILE_END
+        run: npm ci
 
       - name: Verify test files exist
         working-directory: anecdotes-tests
