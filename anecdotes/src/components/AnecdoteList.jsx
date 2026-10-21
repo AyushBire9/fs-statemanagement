@@ -2,11 +2,13 @@ import { useAnecdotes, useAnecdoteActions } from '../store'
 
 const AnecdoteList = () => {
   const anecdotes = useAnecdotes()
+  // toSorted returns a new array, keeping the Zustand state immutable.
+  const sortedAnecdotes = anecdotes.toSorted((a, b) => b.votes - a.votes)
   const { vote } = useAnecdoteActions()
 
   return (
     <>
-      {anecdotes.map((anecdote) => (
+      {sortedAnecdotes.map((anecdote) => (
         <div key={anecdote.id}>
           <div>{anecdote.content}</div>
           <div>
