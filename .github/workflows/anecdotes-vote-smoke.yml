@@ -1,4 +1,4 @@
-name: Anecdotes voting smoke test
+name: Anecdotes voting and creation smoke tests
 
 on:
   push:
@@ -29,6 +29,6 @@ jobs:
       - name: Install Chromium
         working-directory: anecdotes-tests
         run: npx playwright install --with-deps chromium
-      - name: Test Zustand voting
+      - name: Test Zustand voting and anecdote creation
         working-directory: anecdotes-tests
-        run: npx playwright test -c playwright.vote.config.js tests/vote-only.spec.js
+        run: npx playwright test -c playwright.vote.config.js tests/vote-only.spec.js tests/create-only.spec.js
