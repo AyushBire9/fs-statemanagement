@@ -16,7 +16,7 @@ jobs:
 
       - name: Install query-anecdotes dependencies
         working-directory: query-anecdotes
-        run: npm install
+        run: npm ci
 
       - name: Install test dependencies
         working-directory: query-anecdotes-tests

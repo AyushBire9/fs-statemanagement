@@ -16,12 +16,7 @@ jobs:
 
       - name: Install query-anecdotes dependencies
         working-directory: query-anecdotes
-        run: npm install
-
-      - name: Snapshot TanStack Query lock entries
-        working-directory: query-anecdotes
-        run: |
-          node -e "const p=require('./package-lock.json').packages;for(const key of Object.keys(p).filter(k=>k.includes('@tanstack/')))console.log('DEPENDENCY_SNAPSHOT:'+JSON.stringify({key,entry:p[key]}))"
+        run: npm ci
 
       - name: Install test dependencies
         working-directory: query-anecdotes-tests
