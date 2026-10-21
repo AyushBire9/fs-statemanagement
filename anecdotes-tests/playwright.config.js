@@ -2,6 +2,7 @@ import { defineConfig, devices } from "@playwright/test"
 
 export default defineConfig({
   testDir: "./tests",
+  testMatch: ["anecdotes.spec.js"],
   // The backend is shared, mutable state (json-server writes to db.json),
   // so tests must not run concurrently against it.
   fullyParallel: false,

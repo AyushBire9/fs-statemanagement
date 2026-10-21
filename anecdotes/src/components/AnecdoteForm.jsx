@@ -3,12 +3,17 @@ import { useAnecdoteActions } from '../store'
 const AnecdoteForm = () => {
   const { add } = useAnecdoteActions()
 
-  const createAnecdote = (event) => {
+  const createAnecdote = async (event) => {
     event.preventDefault()
-    const content = event.currentTarget.elements.namedItem('anecdote').value.trim()
+    const form = event.currentTarget
+    const content = form.elements.namedItem('anecdote').value.trim()
     if (!content) return
-    add(content)
-    event.currentTarget.reset()
+    try {
+      await add(content)
+      form.reset()
+    } catch (error) {
+      console.error('Could not save anecdote', error)
+    }
   }
 
   return (

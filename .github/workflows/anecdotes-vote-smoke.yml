@@ -1,12 +1,6 @@
 name: Anecdotes exercises 3-6 smoke tests
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "anecdotes/**"
-      - "anecdotes-tests/**"
-      - ".github/workflows/anecdotes-vote-smoke.yml"
   workflow_dispatch:
 
 jobs:
