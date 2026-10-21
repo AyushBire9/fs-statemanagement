@@ -2,7 +2,7 @@ name: Query anecdotes tests 2
 
 on:
   push:
-    branches: [xmain]
+    branches: [main]
 
 jobs:
   playwright-tests:
@@ -16,7 +16,7 @@ jobs:
 
       - name: Install query-anecdotes dependencies
         working-directory: query-anecdotes
-        run: npm ci
+        run: npm install
 
       - name: Install test dependencies
         working-directory: query-anecdotes-tests
